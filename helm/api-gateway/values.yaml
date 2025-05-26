@@ -1,0 +1,10 @@
+replicaCount: 1
+
+properties:
+  accessSecret:
+  eureka:
+    host:
+    port:
+  image:
+    tag:
+    version:
