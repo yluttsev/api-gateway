@@ -1,7 +1,38 @@
 spring:
   application:
     name: api-gateway
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: auth_route
+            uri: lb://auth-service
+            predicates:
+              - Path=/auth/**
+
+          - id: catalog_route
+            uri: lb://catalog-service
+            predicates:
+              - Path=/products
+              - Path=/products/**
+            filters:
+              - name: jwtFilter
+
+          - id: category_route
+            uri: lb://category-service
+            predicates:
+              - Path=/categories
+              - Path=/categories/**
+            filters:
+              - name: jwtFilter
 
 security:
   access:
     secret:
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone:
