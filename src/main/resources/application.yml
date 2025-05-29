@@ -27,6 +27,11 @@ spring:
           filters:
             - name: JwtValidator
 
+logging:
+  level:
+    org:
+      springframework: trace
+
 security:
   access:
     secret:
