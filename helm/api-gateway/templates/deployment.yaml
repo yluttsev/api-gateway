@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: "{{ .Chart.Name }}"
-          image: "{{ .Values.properties.image.tag }}:{{ .Values.properties.image.version }}"
+          image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8761
