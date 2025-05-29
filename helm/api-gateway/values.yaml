@@ -10,7 +10,6 @@ secret:
     accessSecret: "accessSecret"
 
 properties:
-  accessSecret:
   eureka:
     host: eureka-server-service.eureka-server.svc.cluster.local
     port: 8761
