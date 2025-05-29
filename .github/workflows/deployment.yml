@@ -97,4 +97,4 @@ jobs:
 
       - name: Helm upgrade
         run: |
-          helm upgrade --install api-gateway ./helm/api-gateway --namespace api-gateway --set properties.image.name=${{ secrets.REGISTRY_URI }}/shop-registry/${{ github.repository }} --set properties.image.tag=${{ github.sha }}
+          helm upgrade --install api-gateway ./helm/api-gateway --namespace api-gateway --set image.name=${{ secrets.REGISTRY_URI }}/shop-registry/${{ github.repository }} --set image.tag=${{ github.sha }}
