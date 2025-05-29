@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{ .Chart.Name }}-service"
+spec:
+  selector:
+    app: {{ .Chart.Name }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.properties.application.port }}
+      targetPort: 8080
+  type: NodePort
+  

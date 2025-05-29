@@ -1,10 +1,18 @@
 replicaCount: 1
 
+image:
+  name:
+  tag:
+
+secret:
+  name: "api-gateway-secret"
+  keys:
+    accessSecret: "accessSecret"
+
 properties:
   accessSecret:
   eureka:
-    host:
-    port:
-  image:
-    tag:
-    version:
+    host: eureka-server-service.eureka-server.svc.cluster.local
+    port: 8761
+  application:
+    port: 8081

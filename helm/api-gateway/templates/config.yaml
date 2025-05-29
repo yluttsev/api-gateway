@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: "{{ .Chart.Name }}-config"
 data:
-  EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: "{{ .Values.properties.eureka.host }}:{{ .Values.properties.eureka.port }}"
+  EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: "http://{{ .Values.properties.eureka.host }}:{{ .Values.properties.eureka.port }}/eureka/"
