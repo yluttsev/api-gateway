@@ -3,30 +3,29 @@ spring:
     name: api-gateway
   cloud:
     gateway:
-      mvc:
-        routes:
-          - id: auth_service
-            uri: lb://auth-service
-            predicates:
-              - Path=/auth/**
-              - Path=/users/**
-              - Path=/roles
+      routes:
+        - id: auth_service
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
+            - Path=/users/**
+            - Path=/roles
 
-          - id: catalog_service
-            uri: lb://catalog-service
-            predicates:
-              - Path=/products
-              - Path=/products/**
-            filters:
-              - name: jwtFilter
+        - id: catalog_service
+          uri: lb://catalog-service
+          predicates:
+            - Path=/products
+            - Path=/products/**
+          filters:
+            - name: JwtValidator
 
-          - id: category_service
-            uri: lb://category-service
-            predicates:
-              - Path=/categories
-              - Path=/categories/**
-            filters:
-              - name: jwtFilter
+        - id: category_service
+          uri: lb://category-service
+          predicates:
+            - Path=/categories
+            - Path=/categories/**
+          filters:
+            - name: JwtValidator
 
 security:
   access:
