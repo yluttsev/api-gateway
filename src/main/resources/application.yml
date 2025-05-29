@@ -5,12 +5,14 @@ spring:
     gateway:
       mvc:
         routes:
-          - id: auth_route
+          - id: auth_service
             uri: lb://auth-service
             predicates:
               - Path=/auth/**
+              - Path=/users/**
+              - Path=/roles
 
-          - id: catalog_route
+          - id: catalog_service
             uri: lb://catalog-service
             predicates:
               - Path=/products
@@ -18,7 +20,7 @@ spring:
             filters:
               - name: jwtFilter
 
-          - id: category_route
+          - id: category_service
             uri: lb://category-service
             predicates:
               - Path=/categories
