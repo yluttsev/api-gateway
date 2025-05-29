@@ -9,5 +9,5 @@ spec:
     - protocol: TCP
       port: {{ .Values.properties.application.port }}
       targetPort: 8080
-  type: NodePort
+  type: LoadBalancer
   
