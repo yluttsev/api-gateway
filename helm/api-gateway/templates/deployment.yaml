@@ -28,7 +28,7 @@ spec:
           env:
             - name: SECURITY_ACCESS_SECRET
               valueFrom:
-                - secretKeyRef:
-                    name: "{{ .Values.secret.name }}"
-                    key: "{{ .Values.secret.keys.accessSecret }}"
+                secretKeyRef:
+                  name: "{{ .Values.secret.name }}"
+                  key: "{{ .Values.secret.keys.accessSecret }}"
       restartPolicy: Always
