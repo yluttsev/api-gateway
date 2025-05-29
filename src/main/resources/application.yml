@@ -20,7 +20,7 @@ spring:
             - name: JwtValidator
 
         - id: category_service
-          uri: lb://category-service
+          uri: lb://category-app
           predicates:
             - Path=/categories
             - Path=/categories/**
