@@ -4,22 +4,22 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: auth_service
-          uri: lb://auth-service
+        - id: auth_app
+          uri: lb://auth-app
           predicates:
             - Path=/auth/**
             - Path=/users/**
             - Path=/roles
 
-        - id: catalog_service
-          uri: lb://catalog-service
+        - id: catalog_app
+          uri: lb://catalog-app
           predicates:
             - Path=/products
             - Path=/products/**
           filters:
             - name: JwtValidator
 
-        - id: category_service
+        - id: category_app
           uri: lb://category-app
           predicates:
             - Path=/categories
