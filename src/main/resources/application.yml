@@ -7,23 +7,19 @@ spring:
         - id: auth_app
           uri: lb://auth-app
           predicates:
-            - Path=/auth/**
-            - Path=/users/**
-            - Path=/roles
+            - Path=/auth/**, /users/**, /roles
 
         - id: catalog_app
           uri: lb://catalog-app
           predicates:
-            - Path=/products
-            - Path=/products/**
+            - Path=/products, /products/**
           filters:
             - name: JwtValidator
 
         - id: category_app
           uri: lb://category-app
           predicates:
-            - Path=/categories
-            - Path=/categories/**
+            - Path=/categories, /categories/**
           filters:
             - name: JwtValidator
 
