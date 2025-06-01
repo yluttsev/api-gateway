@@ -13,6 +13,7 @@ import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
@@ -55,6 +56,7 @@ public class JwtFilter implements GatewayFilter {
     @SneakyThrows
     private Mono<Void> buildResponse(HttpStatus status, String message, ServerWebExchange exchange) {
         exchange.getResponse().setStatusCode(status);
+        exchange.getResponse().getHeaders().set(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON.toString());
         DataBuffer buffer = exchange.getResponse()
                 .bufferFactory()
                 .wrap(objectMapper.writeValueAsString(new MessageResponse(message)).getBytes(StandardCharsets.UTF_8));
