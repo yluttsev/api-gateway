@@ -14,4 +14,4 @@ properties:
     host: eureka-server-service.eureka-server.svc.cluster.local
     port: 8761
   application:
-    port: 8081
+    port: 8080
