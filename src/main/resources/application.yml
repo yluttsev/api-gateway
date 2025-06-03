@@ -12,9 +12,14 @@ spring:
         - id: catalog_app
           uri: lb://catalog-app
           predicates:
-            - Path=/products, /products/**, /images/**
+            - Path=/products, /products/**
           filters:
             - name: JwtValidator
+
+        - id: catalog_images_app
+          uri: lb://catalog-app
+          predicates:
+            - Path=/images/**
 
         - id: category_app
           uri: lb://category-app
