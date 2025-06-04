@@ -35,16 +35,11 @@ public class JwtValidatorGatewayFilterFactory extends AbstractGatewayFilterFacto
     @Override
     public GatewayFilter apply(Config config) {
         return (exchange, chain) -> {
-            String token = exchange.getRequest().getQueryParams().getFirst("token");
-            if (token == null || token.isEmpty()) {
-                String authHeader = exchange.getRequest().getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
-                if (authHeader != null && authHeader.startsWith("Bearer ")) {
-                    token = authHeader.substring(7);
-                }
-            }
-
-            if (token != null && token.startsWith("Bearer ")) {
+            String authHeader = exchange.getRequest().getHeaders()
+                    .getFirst(HttpHeaders.AUTHORIZATION);
+            if (authHeader != null && authHeader.startsWith("Bearer ")) {
                 try {
+                    String token = authHeader.substring(7);
                     JWT.require(Algorithm.HMAC256(accessSecret)).build().verify(token);
                     return chain.filter(exchange);
                 } catch (TokenExpiredException e) {
