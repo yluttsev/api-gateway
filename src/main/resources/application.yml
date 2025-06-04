@@ -16,6 +16,13 @@ spring:
           filters:
             - name: JwtValidator
 
+        - id: catalog_app_websocket
+          uri: lb://catalog-app
+          predicates:
+            - Path=/notifications/**
+          filters:
+            - name: JwtValidator
+
         - id: catalog_images_app
           uri: lb://catalog-app
           predicates:
