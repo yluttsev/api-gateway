@@ -37,7 +37,7 @@ spring:
 
 security:
   access:
-    secret:
+    secret: ${SECURITY_ACCESS_SECRET}
 
 eureka:
   client:
